@@ -119,9 +119,9 @@ def validate_youtube_link(url, max_duration=300):
     except Exception as e:
         return [False, f"Error loading the video: {e}"]
     
-    # Check video duration
-    if yt.length > max_duration:
-        return [False, f"The video exceeds the {max_duration}-second length limit."]
+    # # Check video duration
+    # if yt.length > max_duration:
+    #     return [False, f"The video exceeds the {max_duration}-second length limit."]
 
     # If all checks pass
     return [True, None]
