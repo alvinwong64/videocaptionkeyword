@@ -1,5 +1,5 @@
 streamlit
-pytubefix
+pytubefix >= 8.5.1
 pillow
 langchain-openai
 langchain
