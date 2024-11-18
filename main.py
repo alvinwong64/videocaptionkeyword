@@ -124,16 +124,16 @@ def back_button():
     st.session_state.pop("video_file", None)
     st.session_state.pop("video_url", None)
 
-
-def main():
+def api_key_input():
     OPENAI_API_KEY = st.sidebar.text_input("OpenAI API Key", type="password")
     st.session_state["OPENAI_API_KEY"] = OPENAI_API_KEY
-
     if not st.session_state["OPENAI_API_KEY"].startswith("sk-"):
         st.warning("Please enter your OpenAI API key!", icon="⚠")
-    
+    chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=st.session_state["OPENAI_API_KEY"])
+    return chain_gpt
 
-    chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=OPENAI_API_KEY)
+def main():
+    chain_gpt = api_key_input()
     if "page" not in st.session_state:
         st.session_state["page"] = "landing"  # Set default page
     
