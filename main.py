@@ -132,6 +132,7 @@ def api_key_input():
     else:
         try:    
             chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=st.session_state["OPENAI_API_KEY"])
+            chain_gpt.invoke("test")
         except:
             st.warning("Incorrect API key!", icon="⚠")
     return chain_gpt
