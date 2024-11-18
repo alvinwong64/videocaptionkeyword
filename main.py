@@ -3,7 +3,8 @@ import streamlit as st
 import os
 import json
 from video_utils import validate_youtube_link, download_video, video_file_to_frames, image_grid
-from LLM_utils import summarize_image, encode_image
+from LLM_utils import summarize_image, encode_image, initialize_chat_gpt
+from langchain_openai import ChatOpenAI
 
 session = st.empty()
 container = session.container()
@@ -125,8 +126,15 @@ def back_button():
 
 
 def main():
+    OPENAI_API_KEY = st.sidebar.text_input("OpenAI API Key", type="password")
+    st.session_state["OPENAI_API_KEY"] = OPENAI_API_KEY
+    
+    if not st.session_state["OPENAI_API_KEY"].startswith("sk-"):
+        st.warning("Please enter your OpenAI API key!", icon="⚠")
+        st.rerun()
+    
 
-    chain_gpt= initialize_chat_gpt()
+    chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=OPENAI_API_KEY)
     if "page" not in st.session_state:
         st.session_state["page"] = "landing"  # Set default page
     

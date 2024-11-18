@@ -54,9 +54,6 @@ def initialize_chat_gpt():
     """
     Initialize a chat GPT model with the given parameters.
     """
-    OPENAI_API_KEY = st.sidebar.text_input("OpenAI API Key", type="password")
-    if not OPENAI_API_KEY.startswith("sk-"):
-        st.warning("Please enter your OpenAI API key!", icon="⚠")
-        st.rerun()
-
+    
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
     return ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=OPENAI_API_KEY)
