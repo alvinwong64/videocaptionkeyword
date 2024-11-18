@@ -129,7 +129,10 @@ def api_key_input():
     st.session_state["OPENAI_API_KEY"] = OPENAI_API_KEY
     if not st.session_state["OPENAI_API_KEY"].startswith("sk-"):
         st.warning("Please enter your OpenAI API key!", icon="⚠")
-    chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=st.session_state["OPENAI_API_KEY"])
+    try:    
+        chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=st.session_state["OPENAI_API_KEY"])
+    except:
+        st.warning("Please enter a valid OpenAI API key!", icon="⚠")
     return chain_gpt
 
 def main():
