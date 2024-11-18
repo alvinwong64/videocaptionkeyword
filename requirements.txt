@@ -4,3 +4,4 @@ pillow
 langchain-openai
 langchain
 opencv-python-headless
+dotenv
