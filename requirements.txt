@@ -80,7 +80,6 @@ python-dateutil
 python-dotenv==1.0.1
 pytubefix==8.5.1
 pytz==2024.2
-pywin32==305.1
 PyYAML==6.0.2
 pyzmq 
 referencing==0.35.1
