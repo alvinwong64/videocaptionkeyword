@@ -132,11 +132,14 @@ def api_key_input():
     try:    
         chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=st.session_state["OPENAI_API_KEY"])
     except:
-        st.warning("Please enter a valid OpenAI API key!", icon="⚠")
+        pass
     return chain_gpt
 
 def main():
-    chain_gpt = api_key_input()
+    try:
+        chain_gpt = api_key_input()
+    except:
+        pass
     if "page" not in st.session_state:
         st.session_state["page"] = "landing"  # Set default page
     
