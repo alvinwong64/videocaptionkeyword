@@ -57,7 +57,7 @@ narwhals==1.14.0
 nest_asyncio 
 numpy==1.26.4
 openai==1.54.4
-opencv-python==4.10.0.84
+opencv-python-headless
 orjson==3.10.11
 packaging 
 pandas==2.2.3
