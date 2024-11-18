@@ -128,10 +128,9 @@ def back_button():
 def main():
     OPENAI_API_KEY = st.sidebar.text_input("OpenAI API Key", type="password")
     st.session_state["OPENAI_API_KEY"] = OPENAI_API_KEY
-    
+
     if not st.session_state["OPENAI_API_KEY"].startswith("sk-"):
         st.warning("Please enter your OpenAI API key!", icon="⚠")
-        st.rerun()
     
 
     chain_gpt= ChatOpenAI(model="gpt-4o-mini", temperature= 0.8, max_tokens=4000, api_key=OPENAI_API_KEY)
